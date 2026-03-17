@@ -9,8 +9,8 @@ export const socialLinks = {
 }
 
 export const contactInfo = {
-  email: "info@astrocode.com",
-  phone: "+1 (555) 123-4567",
+  email: "info@astrocode.co.zw",
+  phone: "0771370199",
   website: "www.astrocode.com",
-  address: "123 Innovation Drive, Tech City, TC 12345"
+  address: "Corner Angwa and Json Moyo Harare Zimbabwe"
 }
