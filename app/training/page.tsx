@@ -232,18 +232,32 @@ export default function TrainingPage() {
               Join our comprehensive training programs and gain the skills you need to succeed in the tech industry. 
               All courses taught by industry professionals with real-world experience.
             </p>
+
             <div className="flex flex-wrap gap-4">
               <Link href="#programs">
                 <Button size="lg" className="gap-2 h-14 px-8">
                   View Programs <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
+
               <Link href="/#contact">
                 <Button size="lg" variant="outline" className="h-14 px-8">
                   Contact Us
                 </Button>
               </Link>
+
+              {/* ✅ WhatsApp Button */}
+              <Link
+                  href="https://wa.me/263771370199?text=Hi%20I%20want%20to%20learn%20with%20AstroCode"
+                  target="_blank"
+              >
+                <Button size="lg" className="gap-2 h-14 px-8">
+                  Chat on WhatsApp <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
             </div>
+
+
           </div>
         </div>
       </section>
@@ -355,17 +369,26 @@ export default function TrainingPage() {
                         ))}
                       </ul>
                     </div>
-                    
+
                     <div className="flex flex-wrap gap-4">
                       <Link href="/#contact">
                         <Button className="gap-2">
                           Enroll Now <ArrowRight className="w-4 h-4" />
                         </Button>
                       </Link>
-                      <Button variant="outline">
-                        Download Curriculum
-                      </Button>
+
+                      {/* ✅ WhatsApp Quick Enroll */}
+                      <Link
+                          href={`https://wa.me/263771370199?text=Hi%20I%20want%20to%20enroll%20in%20${encodeURIComponent(program.title)}`}
+                          target="_blank"
+                      >
+                        <Button variant="outline" className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white">
+                          WhatsApp Enroll
+                        </Button>
+                      </Link>
                     </div>
+
+
                   </div>
                 </div>
               </Card>
@@ -395,9 +418,20 @@ export default function TrainingPage() {
                   Get in Touch <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
+
               <Link href="/#services">
                 <Button size="lg" variant="outline" className="h-14 px-8">
                   View Our Services
+                </Button>
+              </Link>
+
+              {/* ✅ WhatsApp CTA */}
+              <Link
+                  href="https://wa.me/263771370199?text=Hi%20I%20want%20to%20join%20AstroCode%20training"
+                  target="_blank"
+              >
+                <Button size="lg" className="gap-2 h-14 px-8">
+                  Chat on WhatsApp <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
             </div>
