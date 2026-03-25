@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Mail, Phone, Globe, MapPin, Send, Facebook, Instagram, Youtube } from "lucide-react"
+import { Phone, Globe, MapPin, Send, Facebook, Instagram, Youtube } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -26,7 +26,6 @@ function TikTokIcon(props: React.SVGProps<SVGSVGElement>) {
   )
 }
 
-// Only keep the social icons you want
 const socialIcons = [
   { name: "Facebook", icon: Facebook, href: socialLinks.facebook },
   { name: "Instagram", icon: Instagram, href: socialLinks.instagram },
@@ -35,19 +34,20 @@ const socialIcons = [
 ]
 
 export function Contact() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [company, setCompany] = useState("")
+  const [message, setMessage] = useState("")
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitting(true)
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    setIsSubmitting(false)
-    setSubmitted(true)
+    const text = `Hi, my name is ${firstName} ${lastName} from ${company}. Message: ${message}`
+    const encoded = encodeURIComponent(text)
+    const url = `https://wa.me/263771370199?text=${encoded}`
+    window.open(url, "_blank")
   }
 
   const contactItems = [
-    { icon: Mail, label: "Email", value: contactInfo.email, href: `mailto:${contactInfo.email}` },
     { icon: Phone, label: "Phone", value: contactInfo.phone, href: `tel:${contactInfo.phone.replace(/\s/g, '')}` },
     { icon: Globe, label: "Website", value: contactInfo.website, href: `https://${contactInfo.website}` },
     { icon: MapPin, label: "Location", value: contactInfo.address, href: null },
@@ -69,47 +69,31 @@ export function Contact() {
           <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Contact Form */}
             <div className="bg-card border border-border rounded-2xl p-6 md:p-8">
-              {submitted ? (
-                  <div className="text-center py-12">
-                    <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                      <Send className="w-8 h-8 text-primary" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-foreground mb-2">Message Sent!</h3>
-                    <p className="text-muted-foreground">
-                      Thank you for reaching out. We'll get back to you within 24 hours.
-                    </p>
+              <form onSubmit={handleSubmit}>
+                <FieldGroup>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <Field>
+                      <FieldLabel>First Name</FieldLabel>
+                      <Input value={firstName} onChange={e => setFirstName(e.target.value)} placeholder="John" required className="bg-background" />
+                    </Field>
+                    <Field>
+                      <FieldLabel>Last Name</FieldLabel>
+                      <Input value={lastName} onChange={e => setLastName(e.target.value)} placeholder="Doe" required className="bg-background" />
+                    </Field>
                   </div>
-              ) : (
-                  <form onSubmit={handleSubmit}>
-                    <FieldGroup>
-                      <div className="grid sm:grid-cols-2 gap-4">
-                        <Field>
-                          <FieldLabel>First Name</FieldLabel>
-                          <Input placeholder="John" required className="bg-background" />
-                        </Field>
-                        <Field>
-                          <FieldLabel>Last Name</FieldLabel>
-                          <Input placeholder="Doe" required className="bg-background" />
-                        </Field>
-                      </div>
-                      <Field>
-                        <FieldLabel>Email</FieldLabel>
-                        <Input type="email" placeholder="john@example.com" required className="bg-background" />
-                      </Field>
-                      <Field>
-                        <FieldLabel>Company</FieldLabel>
-                        <Input placeholder="Your Company" className="bg-background" />
-                      </Field>
-                      <Field>
-                        <FieldLabel>Message</FieldLabel>
-                        <Textarea placeholder="Tell us about your project..." rows={5} required className="bg-background resize-none" />
-                      </Field>
-                      <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-                        {isSubmitting ? "Sending..." : "Send Message"}
-                      </Button>
-                    </FieldGroup>
-                  </form>
-              )}
+                  <Field>
+                    <FieldLabel>Company</FieldLabel>
+                    <Input value={company} onChange={e => setCompany(e.target.value)} placeholder="Your Company" className="bg-background" />
+                  </Field>
+                  <Field>
+                    <FieldLabel>Message</FieldLabel>
+                    <Textarea value={message} onChange={e => setMessage(e.target.value)} placeholder="Tell us about your project..." rows={5} required className="bg-background resize-none" />
+                  </Field>
+                  <Button type="submit" size="lg" className="w-full">
+                    Send via WhatsApp
+                  </Button>
+                </FieldGroup>
+              </form>
             </div>
 
             {/* Contact Info */}
@@ -124,7 +108,7 @@ export function Contact() {
                       <div>
                         <div className="text-sm text-muted-foreground">{item.label}</div>
                         {item.href ? (
-                            <a href={item.href} className="text-foreground hover:text-primary transition-colors font-medium" target={item.label === "Website" ? "_blank" : undefined} rel={item.label === "Website" ? "noopener noreferrer" : undefined}>
+                            <a href={item.href} className="text-foreground hover:text-primary transition-colors font-medium">
                               {item.value}
                             </a>
                         ) : (
