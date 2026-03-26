@@ -63,9 +63,10 @@ export const metadata: Metadata = {
     'digital marketing Zimbabwe',
     'software development Harare'
   ],
-
   authors: [{ name: 'AstroCode' }],
-
+  verification: {
+    google: "JsQ3B16_imB4eTNublhp_48CCCb0pSh0nUjh4xeq5J8",
+  },
   icons: {
     icon: [
       { url: '/favicon.ico' },
