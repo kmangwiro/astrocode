@@ -1,6 +1,6 @@
 "use client"
 
-import { Brain, Globe, TrendingUp, Palette, Video, Camera, ArrowRight } from "lucide-react"
+import { Brain, Globe, TrendingUp, Palette, Video, Camera, ShoppingCart, Search, Smartphone, MessageCircle, Mail, ArrowRight } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
@@ -71,6 +71,72 @@ const services = [
     cta: "Create Content",
     stats: "100+ pieces delivered",
     bg: "/images/content.jpg"
+  },
+  {
+    icon: ShoppingCart,
+    title: "Ecommerce Website",
+    href: "/services/ecommerce",
+    description: "Custom online stores to sell your products and grow revenue online.",
+    features: ["Shopify/WooCommerce", "Payment Integration", "SEO-Ready", "Mobile Friendly", "Inventory Management"],
+    price: "Starting from $100",
+    cta: "Launch Your Store",
+    stats: "30+ stores built",
+    bg: "/images/ecommerce.jpg"
+  },
+  {
+    icon: Search,
+    title: "SEO & Analytics",
+    href: "/services/seo-analytics",
+    description: "Optimize your website to rank higher on search engines and track performance.",
+    features: ["SEO Audit", "Keyword Research", "Analytics Setup", "Performance Monitoring", "Content Optimization"],
+    price: "From $50/month",
+    cta: "Optimize Now",
+    stats: "40+ clients improved",
+    bg: "/images/ceo.jpg"
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile App Development",
+    href: "/services/mobile-app",
+    description: "Custom mobile apps for iOS and Android to grow your business reach.",
+    features: ["iOS & Android", "User-Friendly UI/UX", "Push Notifications", "App Store Deployment", "Maintenance Support"],
+    price: "Starting from $200",
+    cta: "Build Your App",
+    stats: "15+ apps delivered",
+    bg: "/images/mobile.jpg"
+  },
+  {
+    icon: MessageCircle,
+    title: "Social Media Strategy",
+    href: "/services/social-media",
+    description: "Plan and execute social campaigns to engage your audience and boost growth.",
+    features: ["Content Calendar", "Campaign Planning", "Audience Engagement", "Analytics Tracking", "Growth Strategy"],
+    price: "From $50/month",
+    cta: "Boost Social",
+    stats: "25+ businesses managed",
+    bg: "/images/social.jpg"
+  },
+  {
+    icon: Mail,
+    title: "Email Marketing / Automation",
+    href: "/services/email-marketing",
+    description: "Automated campaigns to nurture leads, retain customers, and increase sales.",
+    features: ["Drip Campaigns", "Newsletters", "Lead Nurturing", "Performance Analytics", "Automated Follow-ups"],
+    price: "From $30/month",
+    cta: "Start Campaign",
+    stats: "20+ campaigns run",
+    bg: "/images/email.jpg"
+  },
+  {
+    icon: Brain,
+    title: "Business Automation Software",
+    href: "/services/business-automation",
+    description: "Custom software solutions to automate repetitive tasks, streamline operations, and boost efficiency.",
+    features: ["Workflow Automation", "Custom Web & Mobile Apps", "CRM & ERP Systems", "AI-Powered Tools", "Integration with Existing Systems"],
+    price: "From $150 per project",
+    cta: "Automate My Business",
+    stats: "10+ businesses automated",
+    bg: "/images/automation.jpg"
   }
 ]
 
@@ -83,13 +149,13 @@ export function Services() {
           {/* Header */}
           <div className="max-w-3xl mx-auto text-center mb-12">
             <p className="text-sm text-primary font-medium uppercase tracking-wider mb-4">
-              IT Consultancy & Design Services
+              IT & Digital Solutions
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
               Solutions That Grow Your <span className="text-primary">Business</span>
             </h2>
             <p className="text-muted-foreground text-lg mb-4">
-              AstroCode provides expert web development, IT consulting, digital marketing, video editing, and content creation services for startups and small businesses.
+              AstroCode provides expert web development, ecommerce, IT consulting, digital marketing, video editing, content creation, SEO, mobile apps, social media strategy, and email automation for startups and small businesses.
             </p>
             <p className="text-sm text-muted-foreground">
               ⚡ Limited slots available this week — act fast!
