@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Sparkles, Play } from "lucide-react"
 import { useEffect, useState } from "react"
 
+// Stats data
 const stats = [
   { value: 50, suffix: "+", label: "Projects Delivered" },
   { value: 100, suffix: "+", label: "Happy Clients" },
@@ -13,6 +14,7 @@ const stats = [
   { value: 100, suffix: "%", label: "Client Satisfaction" },
 ]
 
+// Animated Counter Component
 function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
   const [count, setCount] = useState(0)
 
@@ -40,15 +42,18 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
 
 export function Hero() {
   return (
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-
+      <section
+          className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+          aria-label="Hero Section"
+      >
         {/* Background */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 w-full h-full">
           <Image
               src="/images/hero-bg.jpg"
-              alt="Technology Background"
+              alt="Technology Background showing digital innovation"
               fill
-              className="object-cover"
+              sizes="100vw"
+              className="object-cover object-center"
               priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
@@ -71,19 +76,18 @@ export function Hero() {
             </span>
             </div>
 
-            {/* 🔥 HEADLINE (MONEY FOCUSED) */}
+            {/* Headline */}
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
               We Don&apos;t Just Build Websites, We Bring You Customers Online
             </h1>
 
             {/* Subheadline */}
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed">
-                We help Zimbabwean businesses grow their online presence, attract more clients, and increase sales using websites, marketing, and automation.
+              We help Zimbabwean businesses grow their online presence, attract more clients, and increase sales using websites, marketing, and automation.
             </p>
 
+            {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-
-              {/* 💰 MAIN MONEY BUTTON */}
               <Link href="https://wa.me/263771370199?text=Hi%20I%20need%20a%20website%20for%20my%20business">
                 <Button size="lg" className="h-14 px-8 text-lg">
                   Get Website Now
@@ -91,26 +95,23 @@ export function Hero() {
                 </Button>
               </Link>
 
-              {/* 📊 SERVICES */}
               <Link href="#services">
                 <Button size="lg" variant="outline" className="h-14 px-8 text-lg">
                   View Services
                 </Button>
               </Link>
 
-              {/* 🎓 LEARN WITH US */}
               <Link href="/training">
-                <Button size="lg"  className="h-14 px-8 text-lg">
+                <Button size="lg" className="h-14 px-8 text-lg">
                   Learn With Us
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
-
             </div>
 
-            {/* 🔥 TRUST + URGENCY */}
+            {/* Trust & Urgency */}
             <p className="text-sm text-muted-foreground mb-12">
-              Build your business or learn the skills to start your own
+              Build your business or learn the skills to start your own.
             </p>
 
             {/* Stats */}
@@ -119,16 +120,17 @@ export function Hero() {
                   <div key={stat.label} className="text-center group">
                     <div className="text-3xl md:text-5xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">
                       <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                      {/* Static fallback for SEO */}
+                      <noscript>{stat.value}{stat.suffix}</noscript>
                     </div>
                     <div className="text-sm text-muted-foreground">{stat.label}</div>
                   </div>
               ))}
             </div>
-
           </div>
         </div>
 
-        {/* Scroll */}
+        {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
           <span className="text-xs text-muted-foreground">Scroll</span>
           <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-2">
@@ -136,6 +138,30 @@ export function Hero() {
           </div>
         </div>
 
+        {/* Structured Data for Hero Section */}
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                name: "AstroCode",
+                url: "https://www.astrocode.co.zw",
+                logo: "https://www.astrocode.co.zw/astrocode_128x128.png",
+                sameAs: [
+                  "https://www.facebook.com/astrocode",
+                  "https://www.instagram.com/astrocode",
+                  "https://www.youtube.com/@astrocode",
+                  "https://www.tiktok.com/@astrocode"
+                ],
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Harare",
+                  addressCountry: "Zimbabwe"
+                }
+              })
+            }}
+        />
       </section>
   )
 }

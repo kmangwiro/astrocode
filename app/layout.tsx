@@ -1,3 +1,4 @@
+// app/layout.tsx
 import type { Metadata, Viewport } from 'next'
 import { Space_Grotesk, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
@@ -6,67 +7,77 @@ import './globals.css'
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: '--font-sans'
-});
+})
 
 const inter = Inter({
   subsets: ["latin"],
   variable: '--font-body'
-});
+})
 
 export const metadata: Metadata = {
-  title: 'AstroCode | Leading IT Consultancy & Digital Solutions Company',
-
+  title: 'AstroCode | Web Development & IT Consultancy in Zimbabwe',
   description:
-      'AstroCode is a leading IT consultancy specializing in web development, digital marketing, AI solutions, and custom software development. We help businesses transform through innovative and scalable technology solutions.',
-
+      'AstroCode is a Zimbabwe-based IT consultancy in Harare offering web development, digital marketing, branding, AI solutions, and automation services.',
+  metadataBase: new URL('https://www.astrocode.co.zw'), // <-- add this
   keywords: [
-    // Core Services
-    'IT consultancy',
-    'IT consulting services',
-    'technology consulting',
-    'digital transformation',
-    'custom software development',
+    // Core IT & Consultancy
+    'IT consultancy Zimbabwe',
+    'technology consulting Zimbabwe',
+    'IT services Harare',
+    'business technology solutions',
+    'IT company Zimbabwe',
+    'software solutions Harare',
+    'IT support Zimbabwe',
 
     // Development
-    'web development',
-    'website development',
-    'full stack development',
-    'frontend development',
-    'backend development',
+    'web development Zimbabwe',
+    'website development Harare',
+    'full stack development Zimbabwe',
+    'frontend development Harare',
+    'backend development Zimbabwe',
+    'mobile app development',
+    'ecommerce website development',
+    'custom software development',
 
-    // Marketing
-    'digital marketing',
-    'SEO services',
-    'search engine optimization',
-    'social media marketing',
-    'online marketing',
+    // Marketing & Digital
+    'digital marketing Zimbabwe',
+    'SEO services Harare',
+    'search engine optimization Zimbabwe',
+    'social media marketing Zimbabwe',
+    'online marketing Harare',
+    'content marketing Zimbabwe',
+    'branding services Zimbabwe',
 
     // Advanced Tech
-    'artificial intelligence',
-    'machine learning',
-    'AI solutions',
-    'automation systems',
+    'artificial intelligence Zimbabwe',
+    'machine learning solutions',
+    'AI automation systems',
+    'data analytics Zimbabwe',
+    'chatbot development',
+    'automation software Zimbabwe',
 
-    // Branding & UX
-    'UI UX design',
-    'product design',
-    'web design',
+    // UI / UX / Design
+    'UI UX design Zimbabwe',
+    'product design Harare',
+    'web design Zimbabwe',
+    'graphic design services',
 
-    // Business intent keywords
-    'IT company',
-    'software company',
-    'tech solutions provider',
+    // Business & Commercial Intent
+    'tech solutions provider Zimbabwe',
+    'IT consulting services for businesses',
+    'digital transformation Zimbabwe',
+    'technology strategy Zimbabwe',
+    'business growth technology solutions',
 
-    // Location (VERY IMPORTANT for ranking)
-    'IT consultancy Zimbabwe',
-    'web development Zimbabwe',
-    'digital marketing Zimbabwe',
-    'software development Harare'
+    // Location-Specific
+    'software development Harare',
+    'web development Harare',
+    'digital marketing Harare',
+    'AI solutions Harare',
+    'IT services Harare'
   ],
   authors: [{ name: 'AstroCode' }],
-  verification: {
-    google: "JsQ3B16_imB4eTNublhp_48CCCb0pSh0nUjh4xeq5J8",
-  },
+  verification: { google: 'JsQ3B16_imB4eTNublhp_48CCCb0pSh0nUjh4xeq5J8' },
   icons: {
     icon: [
       { url: '/favicon.ico' },
@@ -75,14 +86,21 @@ export const metadata: Metadata = {
     ],
     apple: '/astrocode_128x128.png',
   },
-
   openGraph: {
-    title: 'AstroCode | IT Consultancy & Digital Transformation Experts',
-    description:
-        'Transform your business with AstroCode — experts in IT consulting, web development, AI, and digital marketing solutions.',
+    title: 'AstroCode | Web Development & IT Consultancy in Zimbabwe',
+    description: 'Grow your business with AstroCode — web development, marketing & IT experts in Zimbabwe.',
+    url: 'https://www.astrocode.co.zw',
+    siteName: 'AstroCode',
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
     type: 'website',
   },
-};
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AstroCode | IT Consultancy Zimbabwe',
+    description: 'Web development, marketing & automation services in Zimbabwe.',
+  },
+  robots: { index: true, follow: true },
+}
 
 export const viewport: Viewport = {
   themeColor: '#0d2818',
@@ -91,16 +109,42 @@ export const viewport: Viewport = {
 }
 
 export default function RootLayout({
-  children,
-}: Readonly<{
+                                     children,
+                                   }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-     <html lang="en" suppressHydrationWarning>
+      <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Structured Data for Google */}
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                name: "AstroCode",
+                url: "https://www.astrocode.co.zw",
+                logo: "https://www.astrocode.co.zw/astrocode_128x128.png",
+                sameAs: [
+                  "https://www.facebook.com/astrocode",
+                  "https://www.instagram.com/astrocode",
+                  "https://www.youtube.com/@astrocode",
+                  "https://www.tiktok.com/@astrocode"
+                ],
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Harare",
+                  addressCountry: "Zimbabwe"
+                }
+              })
+            }}
+        />
+      </head>
       <body className={`${spaceGrotesk.variable} ${inter.variable} font-sans antialiased`}>
-        {children}
-        <Analytics />
+      {children}
+      <Analytics />
       </body>
-    </html>
+      </html>
   )
 }
