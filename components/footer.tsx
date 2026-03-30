@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import { Facebook, Instagram, Youtube } from "lucide-react"
 import { socialLinks } from "@/lib/social-links"
@@ -11,7 +13,7 @@ function TikTokIcon(props: React.SVGProps<SVGSVGElement>) {
   )
 }
 
-// Only keep the social icons you want
+// Social Icons
 const socialIcons = [
   { name: "Facebook", icon: Facebook, href: socialLinks.facebook },
   { name: "Instagram", icon: Instagram, href: socialLinks.instagram },
@@ -22,22 +24,21 @@ const socialIcons = [
 export function Footer() {
   const footerLinks = {
     services: [
-      { label: "AI & Machine Learning", href: "/services/data-science-ai" },
-      { label: "Digital Transformation", href: "/services/digital-transformation" },
-      { label: "UI/UX Design", href: "/services/design" },
-      { label: "Digital Marketing", href: "/services/digital-marketing" },
-      { label: "Software Development", href: "/services/software-development" },
-    ],
-    training: [
-      { label: "Application Development", href: "/training" },
-      { label: "Graphics & UI/UX Design", href: "/training" },
-      { label: "Data Science & AI", href: "/training" },
-      { label: "Digital Marketing", href: "/training" },
+      { label: "AI & Business Automation", href: "#services" },
+      { label: "Custom Software & Web Development", href: "#services" },
+      { label: "Digital Marketing & Growth", href: "#services" },
+      { label: "Branding & Content Creation", href: "#services" },
     ],
     company: [
       { label: "About Us", href: "#about" },
       { label: "Why Choose Us", href: "#why-us" },
+      { label: "Portfolio", href: "#portfolio" },
       { label: "Contact", href: "#contact" },
+    ],
+    support: [
+      { label: "Free Consultation", href: "#contact" },
+      { label: "WhatsApp Us", href: "https://wa.me/263771370199" },
+      { label: "Email Support", href: "mailto:info@astrocode.co.zw" },
     ],
   }
 
@@ -45,6 +46,7 @@ export function Footer() {
       <footer className="bg-card border-t border-border">
         <div className="container mx-auto px-4 md:px-6 py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+
             {/* Brand */}
             <div className="col-span-2 md:col-span-1">
               <Link href="/" className="flex items-center gap-2 mb-4">
@@ -52,11 +54,12 @@ export function Footer() {
                   <span className="text-primary-foreground font-bold text-lg">A</span>
                 </div>
                 <span className="text-xl font-bold text-foreground">
-                Astro<span className="text-primary">Code</span>
-              </span>
+                  Astro<span className="text-primary">Code</span>
+                </span>
               </Link>
+
               <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-                Where Technology Meets Excellence. Building intelligent, scalable digital solutions.
+                We help businesses grow faster using AI, software, and smart digital solutions.
               </p>
 
               {/* Social Icons */}
@@ -90,11 +93,11 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Training */}
+            {/* Support (Replaced Training) */}
             <div>
-              <h4 className="font-semibold text-foreground mb-4">Training</h4>
+              <h4 className="font-semibold text-foreground mb-4">Support</h4>
               <ul className="space-y-3">
-                {footerLinks.training.map((link) => (
+                {footerLinks.support.map((link) => (
                     <li key={link.label}>
                       <Link href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                         {link.label}
@@ -117,6 +120,7 @@ export function Footer() {
                 ))}
               </ul>
             </div>
+
           </div>
 
           {/* Bottom Bar */}
@@ -125,7 +129,7 @@ export function Footer() {
               &copy; {new Date().getFullYear()} AstroCode. All rights reserved.
             </p>
             <p className="text-sm text-muted-foreground">
-              Powered by <span className="text-primary">Innovation</span>
+              Built for growth.
             </p>
           </div>
         </div>
