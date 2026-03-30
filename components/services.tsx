@@ -1,222 +1,195 @@
 "use client"
 
-import { Brain, Globe, TrendingUp, Palette, Video, Camera, ShoppingCart, Search, Smartphone, MessageCircle, Mail, ArrowRight } from "lucide-react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Brain, Globe, TrendingUp, Palette, ArrowRight } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
 const services = [
   {
+    icon: Brain,
+    title: "AI & Business Automation",
+    description:
+        "We design intelligent systems that automate your operations, reduce manual work, and help your business scale faster with less effort.",
+    points: ["Process Automation", "AI Integration", "CRM Systems", "Workflow Optimization"],
+    cta: "Automate My Business",
+    bg: "/images/it.jpg",
+  },
+  {
     icon: Globe,
-    title: "Web Development",
-    href: "/services/web-development",
-    description: "Professional, high-converting websites that attract customers and grow your business online.",
-    features: ["Custom Business Websites", "Mobile-Responsive & SEO-Ready", "Free Domain", "Fast Delivery", "Conversion Optimized"],
-    price: "Starting from $60",
-    cta: "Get Your Website",
-    stats: "50+ websites delivered",
-    bg: "/images/web.jpg"
+    title: "Custom Software & Web Solutions",
+    description:
+        "From high-converting websites to powerful business systems, we build technology that attracts customers and drives growth.",
+    points: ["Websites & Web Apps", "Ecommerce Platforms", "Custom Systems", "Mobile Apps"],
+    cta: "Start My Project",
+    bg: "/images/automation.jpg",
   },
   {
     icon: TrendingUp,
-    title: "Digital Marketing",
-    href: "/services/digital-marketing",
-    description: "Increase leads, traffic, and sales with targeted marketing strategies.",
-    features: ["Social Media Management", "Facebook & Google Ads", "Content Creation", "Lead Generation", "Growth Strategy"],
-    price: "From $50/month",
-    cta: "Start Growing",
-    stats: "30+ businesses boosted",
-    bg: "/images/digital.jpg"
-  },
-  {
-    icon: Brain,
-    title: "IT Consulting & Automation",
-    href: "/services/it-consulting",
-    description: "Smart IT consulting and automation solutions to scale your business.",
-    features: ["WhatsApp Chatbots", "CRM Systems", "Automation Tools", "AI Integration", "Process Optimization"],
-    price: "From $50 per consultation",
-    cta: "Consult Now",
-    stats: "20+ businesses assisted",
-    bg: "/images/it.jpg"
+    title: "Digital Growth & Marketing",
+    description:
+        "We help you attract the right audience, generate quality leads, and turn traffic into paying customers.",
+    points: ["Paid Ads", "SEO", "Lead Generation", "Growth Strategy"],
+    cta: "Grow My Business",
+    bg: "/images/content.jpg",
   },
   {
     icon: Palette,
-    title: "Branding & Graphic Design",
-    href: "/services/branding-design",
-    description: "Affordable, professional branding services for small businesses and startups.",
-    features: ["Logo Design ($20+)", "Business Cards ($15+)", "Flyers & Posters ($10+)", "Social Media Posts ($10+)", "Marketing Materials ($25+)"],
-    price: "Starting from $10",
-    cta: "Get Designs",
-    stats: "100+ designs created",
-    bg: "/images/graphics.jpg"
+    title: "Branding & Content",
+    description:
+        "Build a strong, professional brand and create content that captures attention and converts your audience into loyal customers.",
+    points: ["Brand Identity", "Design", "Content Creation", "Video & Media"],
+    cta: "Build My Brand",
+    bg: "/images/design.jpg",
   },
-  {
-    icon: Video,
-    title: "Video Editing",
-    href: "/services/video-editing",
-    description: "Professional video editing for social media, ads, and brand storytelling.",
-    features: ["Social Media Clips", "Promo Videos", "YouTube Content", "Brand Videos", "Fast Turnaround"],
-    price: "Starting from $30",
-    cta: "Get Edited",
-    stats: "50+ videos completed",
-    bg: "/images/video.jpg"
-  },
-  {
-    icon: Camera,
-    title: "Content Creation",
-    href: "/services/content-creation",
-    description: "Engaging content to grow your brand, drive traffic, and increase sales.",
-    features: ["Social Media Posts", "Photography & Videography", "Blog Writing", "Infographics", "Marketing Materials"],
-    price: "From $20/month",
-    cta: "Create Content",
-    stats: "100+ pieces delivered",
-    bg: "/images/content.jpg"
-  },
-  {
-    icon: ShoppingCart,
-    title: "Ecommerce Website",
-    href: "/services/ecommerce",
-    description: "Custom online stores to sell your products and grow revenue online.",
-    features: ["Shopify/WooCommerce", "Payment Integration", "SEO-Ready", "Mobile Friendly", "Inventory Management"],
-    price: "Starting from $100",
-    cta: "Launch Your Store",
-    stats: "30+ stores built",
-    bg: "/images/ecommerce.jpg"
-  },
-  {
-    icon: Search,
-    title: "SEO & Analytics",
-    href: "/services/seo-analytics",
-    description: "Optimize your website to rank higher on search engines and track performance.",
-    features: ["SEO Audit", "Keyword Research", "Analytics Setup", "Performance Monitoring", "Content Optimization"],
-    price: "From $50/month",
-    cta: "Optimize Now",
-    stats: "40+ clients improved",
-    bg: "/images/ceo.jpg"
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile App Development",
-    href: "/services/mobile-app",
-    description: "Custom mobile apps for iOS and Android to grow your business reach.",
-    features: ["iOS & Android", "User-Friendly UI/UX", "Push Notifications", "App Store Deployment", "Maintenance Support"],
-    price: "Starting from $200",
-    cta: "Build Your App",
-    stats: "15+ apps delivered",
-    bg: "/images/mobile.jpg"
-  },
-  {
-    icon: MessageCircle,
-    title: "Social Media Strategy",
-    href: "/services/social-media",
-    description: "Plan and execute social campaigns to engage your audience and boost growth.",
-    features: ["Content Calendar", "Campaign Planning", "Audience Engagement", "Analytics Tracking", "Growth Strategy"],
-    price: "From $50/month",
-    cta: "Boost Social",
-    stats: "25+ businesses managed",
-    bg: "/images/social.jpg"
-  },
-  {
-    icon: Mail,
-    title: "Email Marketing / Automation",
-    href: "/services/email-marketing",
-    description: "Automated campaigns to nurture leads, retain customers, and increase sales.",
-    features: ["Drip Campaigns", "Newsletters", "Lead Nurturing", "Performance Analytics", "Automated Follow-ups"],
-    price: "From $30/month",
-    cta: "Start Campaign",
-    stats: "20+ campaigns run",
-    bg: "/images/email.jpg"
-  },
-  {
-    icon: Brain,
-    title: "Business Automation Software",
-    href: "/services/business-automation",
-    description: "Custom software solutions to automate repetitive tasks, streamline operations, and boost efficiency.",
-    features: ["Workflow Automation", "Custom Web & Mobile Apps", "CRM & ERP Systems", "AI-Powered Tools", "Integration with Existing Systems"],
-    price: "From $150 per project",
-    cta: "Automate My Business",
-    stats: "10+ businesses automated",
-    bg: "/images/automation.jpg"
-  }
 ]
 
 export function Services() {
   return (
       <section id="services" className="py-24 md:py-32 relative">
+
+        {/* Background */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
+
         <div className="container mx-auto px-4 md:px-6 relative z-10">
 
           {/* Header */}
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <p className="text-sm text-primary font-medium uppercase tracking-wider mb-4">
-              IT & Digital Solutions
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <p className="text-sm text-primary font-semibold uppercase tracking-wider mb-4">
+              Our Solutions
             </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Solutions That Grow Your <span className="text-primary">Business</span>
+
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
+              We Build Technology That Helps Your{" "}
+              <span className="text-primary">Business Grow Faster</span>
             </h2>
+
             <p className="text-muted-foreground text-lg mb-4">
-              AstroCode provides expert web development, ecommerce, IT consulting, digital marketing, video editing, content creation, SEO, mobile apps, social media strategy, and email automation for startups and small businesses.
+              Whether you're looking to attract more customers, automate operations, or build powerful digital systems — we provide the tools and expertise to make it happen.
             </p>
+
             <p className="text-sm text-muted-foreground">
-              ⚡ Limited slots available this week — act fast!
+              Limited availability — we only take a few clients each month
             </p>
           </div>
 
           {/* Services Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
             {services.map((service) => (
                 <Card
                     key={service.title}
-                    className="group relative border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:scale-[1.03] overflow-hidden"
+                    className="
+                group relative overflow-hidden rounded-2xl border border-border
+                bg-background/80 backdrop-blur
+
+                shadow-md hover:shadow-2xl
+
+                transition-all duration-500 ease-out
+
+                hover:-translate-y-2
+                hover:scale-[1.03]
+                active:scale-[0.98]
+              "
                 >
-                  {/* Background image */}
+
+                  {/* Background Image */}
                   <div
-                      className="absolute inset-0 bg-cover bg-center opacity-10 group-hover:opacity-20 transition-opacity"
+                      className="
+                  absolute inset-0 bg-cover bg-center
+                  opacity-10 group-hover:opacity-20
+                  transition-all duration-700
+                  group-hover:scale-110
+                "
                       style={{ backgroundImage: `url(${service.bg})` }}
-                      aria-hidden="true"
                   />
 
-                  <CardHeader className="pt-6 pb-3 text-center relative z-10">
-                    <div className="w-14 h-14 mx-auto rounded-xl bg-gradient-to-tr from-primary to-primary/80 flex items-center justify-center mb-4 shadow-lg">
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+
+                  {/* Glow Effect */}
+                  <div
+                      className="
+                  absolute inset-0 rounded-2xl pointer-events-none
+                  opacity-0 group-hover:opacity-100
+                  transition duration-500
+                  shadow-[0_0_40px_rgba(59,130,246,0.25)]
+                "
+                  />
+
+                  {/* Content */}
+                  <CardHeader className="text-center pt-8 relative z-10">
+
+                    <div
+                        className="
+                    w-14 h-14 mx-auto rounded-xl
+                    bg-gradient-to-tr from-primary to-primary/80
+                    flex items-center justify-center mb-4 shadow-lg
+
+                    transition-all duration-500
+                    group-hover:scale-110 group-hover:rotate-3
+                  "
+                    >
                       <service.icon className="w-7 h-7 text-white" />
                     </div>
+
                     <CardTitle className="text-xl text-foreground">
-                      <Link href={service.href} className="hover:text-primary transition">
-                        {service.title}
-                      </Link>
+                      {service.title}
                     </CardTitle>
-                    <CardDescription className="text-muted-foreground">{service.description}</CardDescription>
-                    <p className="text-xs text-primary mt-2 font-medium">{service.stats}</p>
+
                   </CardHeader>
 
-                  <CardContent className="relative z-10">
-                    <p className="text-primary font-bold text-lg mb-2 text-center">{service.price}</p>
-                    <p className="text-xs text-muted-foreground text-center mb-4">
-                      Affordable pricing for beginners & small businesses
+                  <CardContent className="text-center px-6 pb-8 transition-all duration-500 group-hover:-translate-y-1 relative z-10">
+
+                    <p className="text-muted-foreground mb-5">
+                      {service.description}
                     </p>
 
-                    <ul className="space-y-2 mb-6">
-                      {service.features.map((feature) => (
-                          <li key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
-                            <div className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                            {feature}
+                    {/* Key Points */}
+                    <ul className="mb-6 space-y-2">
+                      {service.points.map((point) => (
+                          <li key={point} className="text-sm text-muted-foreground">
+                            • {point}
                           </li>
                       ))}
                     </ul>
 
                     <Link
-                        href={`https://wa.me/263771370199?text=Hi%20I%20am%20interested%20in%20your%20service:%20${encodeURIComponent(service.title)}`}
+                        href={`https://wa.me/263771370199?text=Hi%20I%20am%20interested%20in%20${encodeURIComponent(service.title)}`}
                         target="_blank"
                     >
-                      <Button className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-white flex items-center justify-center">
+                      <Button
+                          className="
+                      w-full bg-gradient-to-r from-primary to-primary/90 text-white
+                      transition-all duration-300
+                      group-hover:shadow-lg
+                    "
+                      >
                         {service.cta}
                         <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                       </Button>
                     </Link>
+
                   </CardContent>
                 </Card>
             ))}
+
           </div>
+
+          {/* Bottom CTA */}
+          <div className="text-center mt-16">
+            <p className="text-muted-foreground mb-4">
+              Not sure what you need? Let’s figure it out together.
+            </p>
+
+            <Link href="https://wa.me/263771370199?text=Hi%20I%20need%20help%20with%20my%20business" target="_blank">
+              <Button size="lg" className="px-8">
+                Get Free Consultation
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
+          </div>
+
         </div>
       </section>
   )
