@@ -8,8 +8,8 @@ import { useEffect, useState } from "react"
 
 // Stats data
 const stats = [
-    { value: 50, suffix: "+", label: "Projects Delivered" },
-    { value: 80, suffix: "+", label: "Businesses Served" },
+    { value: 5, suffix: "+", label: "Projects Delivered" },
+    { value: 10, suffix: "+", label: "Businesses Served" },
     { value: 5, suffix: "+", label: "Years Experience" },
     { value: 95, suffix: "%", label: "Client Satisfaction" },
 ]
@@ -93,11 +93,11 @@ export function Hero() {
                             </Button>
                         </Link>
 
-                        <Link href="#services">
+                        <a href="#services">
                             <Button size="lg" variant="outline" className="h-14 px-8 text-lg">
                                 View Solutions
                             </Button>
-                        </Link>
+                        </a>
                     </div>
 
                     {/* Micro Trust */}
