@@ -1,8 +1,8 @@
 "use client"
 
-import { useState } from "react"
+import {useState} from "react"
 import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
+import {ArrowUpRight} from "lucide-react"
 
 const portfolioItems = [
     {
@@ -26,6 +26,21 @@ const portfolioItems = [
         description: "Portfolio website with branding and responsive design.",
         category: "Branding & Design",
     },
+    {
+        title: "Marvel Industries",
+        url: "https://www.marvellindustries.co.zw/",
+        image: "/images/logo.jpg",
+        description: "For Modern Agriculture",
+        category: "Branding & Web Design",
+    },
+
+    {
+        title: "Vhuka digital group",
+        url: "https://www.vukadigitalgroup.co.zw/",
+        image: "/images/vuka-logo.png",
+        description: "We Build Brands & Drive Digital Growth",
+        category: "Branding & Web Design",
+    },
 ]
 
 const categories = ["All", "Web Development", "Branding & Design"]
@@ -42,7 +57,8 @@ export function Portfolio() {
         <section id="portfolio" className="py-24 md:py-32 relative">
 
             {/* Background */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
+            <div
+                className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent"/>
 
             <div className="container mx-auto px-4 md:px-6 relative z-10">
 
@@ -113,10 +129,12 @@ export function Portfolio() {
                                 />
 
                                 {/* Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-70" />
+                                <div
+                                    className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-70"/>
 
                                 {/* Category Badge */}
-                                <div className="absolute top-4 left-4 bg-primary/90 text-white text-xs px-3 py-1 rounded-full">
+                                <div
+                                    className="absolute top-4 left-4 bg-primary/90 text-white text-xs px-3 py-1 rounded-full">
                                     {item.category}
                                 </div>
                             </div>
@@ -126,7 +144,7 @@ export function Portfolio() {
 
                                 <h3 className="text-lg font-semibold text-foreground mb-2 flex items-center justify-between">
                                     {item.title}
-                                    <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition" />
+                                    <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition"/>
                                 </h3>
 
                                 <p className="text-sm text-muted-foreground">
@@ -141,7 +159,7 @@ export function Portfolio() {
                 opacity-0 group-hover:opacity-100
                 transition duration-500
                 shadow-[0_0_40px_rgba(59,130,246,0.25)]
-              " />
+              "/>
 
                         </Link>
                     ))}
